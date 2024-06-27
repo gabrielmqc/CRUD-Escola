@@ -1,0 +1,130 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #444;
+}
+
+/* Estilos para as abas */
+.tabs {
+    overflow: hidden;
+    background-color: #333;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab {
+    float: left;
+    margin-right: 10px;
+}
+
+.tab button {
+    background-color: #333;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.tab button:hover {
+    background-color: #555;
+}
+
+.tab button.active {
+    background-color: #666;
+}
+
+/* Estilos para o conteúdo das abas */
+.tabcontent {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+    animation: fadeEffect 0.5s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Estilos para os formulários */
+form {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"], input[type="email"], input[type="date"], input[type="number"], input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Estilos para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+td .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+td .action-buttons button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+td .action-buttons button:hover {
+    background-color: #555;
+}

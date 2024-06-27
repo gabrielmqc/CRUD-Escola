@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Escolas e Estudantes</title>
+  <link rel="stylesheet" href="ceesseesse.css">
+  <script src="script.js"></script>
+  <script src="Professor.js"></script>
+  <script src="curso.js"></script>
+  <script src="sala.js"></script>
+  <script src="horario.js"></script>
+  <script src="avaliacao.js"></script>
+  <script src="disciplina.js"></script>
+  <script src="matricula.js"></script>
+  <script src="turma.js"></script>
+</head>
+
+<body>
+
+  <div class="tabs">
+
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'alunos')">Alunos</button>
+    </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'notas')">Notas/Disciplina</button>
+    </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'professores')">Professor</button>
+    </div>
+  </div>
+
+  <button id="alunosBtn">Mostrar Alunos</button>
+  <table id="alunosTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data de Nascimento</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>CPF</th>
+        <th>RG</th>
+        <th>Data de Matrícula</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="matriculasBtn">Mostrar Matriculas</button>
+  <table id="matriculasTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Aluno</th>
+        <th>Turma</th>
+        <th>Data da Matricula</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+
+  <button id="cursosBtn">Mostrar Cursos</button>
+  <table id="cursosTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Nome</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+
+  <button id="professoresBtn">Mostrar Professores</button>
+  <table id="professoresTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>CPF</th>
+        <th>RG</th>
+        <th>Titulação</th>
+        <th>Data de Contratação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="turmasBtn">Mostrar Turmas</button>
+  <table id="turmasTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Ano Letivo</th>
+        <th>Turno</th>
+        <th>Semestre</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+
+  <button id="salasBtn">Mostrar Salas</button>
+  <table id="salasTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Capacidade</th>
+
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+
+
+  <button id="avaliacoesBtn">Mostrar Avaliações</button>
+  <table id="avaliacoesTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Data</th>
+        <th>Peso</th>
+
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="horariosBtn">Mostrar Horários</button>
+  <table id="horariosTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Dia da Semana</th>
+        <th>Data Início</th>
+        <th>Hora Início</th>
+        <th>Data Fim</th>
+        <th>Hora Fim</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="disciplinasBtn">Mostrar Disciplinas</button>
+  <table id="disciplinasTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Carga Horária</th>
+
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="alunos" class="tabcontent">
+    <h2>Preencher dados dos Alunos</h2>
+    <form id="alunosForm" onsubmit="(event)">
+      <label for="nome">Nome do Aluno:</label>
+      <input type="text" id="nome" name="nome"><br>
+      <label for="dataDeNascimento">Data de Nascimento:</label>
+      <input type="date" id="dataDeNascimento" name="dataDeNascimento"><br>
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco" name="endereco"><br>
+      <label for="telefone">Telefone:</label>
+      <input type="text" id="telefone" name="telefone"><br>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email"><br>
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" name="cpf"><br>
+      <label for="rg">RG:</label>
+      <input type="text" id="rg" name="rg"><br>
+      <label for="dataMatricula">Data de Matrícula:</label>
+      <input type="date" id="dataMatricula" name="dataMatricula"><br>
+      <button id="adicionarAlunoBtn">Adicionar Aluno</button>
+    </form>
+
+    <form id="matriculasForm" onsubmit="(event)">
+
+      <label for="alunoIdMatricula">Id do Aluno </label>
+      <input type="text" id="alunoIdMatricula" name="alunoIdMatricula"><br>
+
+      <label for="turmaIdMatricula">Id Turma </label>
+      <input type="text" id="turmaIdMatricula" name="turmaIdMatricula"><br>
+
+      <label for="dataMatricula">Data Matricula:</label>
+      <input type="date" id="dataMatricula" name="dataMatricula"><br>
+      <button id="adicionarMatriculaBtn">Adicionar Matricula</button>
+
+    </form>
+
+    <form id="cursoForm" onsubmit="(event)">
+      <label for="cursoNome">Nome do Curso:</label>
+      <input type="text" id="nomeCurso" name="nome"><br>
+      <button id="adicionarCursoBtn">Adicionar Curso</button>
+    </form>
+
+    <form id="turmasForm" onsubmit="(event)">
+      <label for="anoLetivo">Ano Letivo:</label>
+      <input type="number" id="anoLetivo" name="anoLetivo"><br>
+    
+      <label for="semestre">Semestre:</label>
+      <input type="number" id="semestre" name="semestre"><br>
+    
+      <label for="turno">Turno:</label>
+      <input type="text" id="turno" name="turno"><br>
+    
+      <label for="cursoId">ID do Curso:</label>
+      <input type="number" id="cursoId" name="cursoId"><br>
+    
+      <button id="adicionarTurmaBtn">Adicionar Turma</button>
+    </form>
+
+    <form id="salaForm" onsubmit="(event)">
+      <label for="nome">Numero da sala:</label>
+      <input type="text" id="nomeSala" name="nome"><br>
+      <label for="capacidade">Capacidade da Sala:</label>
+      <input type="text" id="capacidade" name="capacidade"><br>
+      <label for="horarioId">Horario:</label>
+      <input type="text" id="horarioIdSala" name="horarioId"><br>
+      <button id="adicionarSalaBtn">Adicionar Sala</button>
+    </form>
+
+  </div>
+
+
+
+  <div id="professores" class="tabcontent">
+    <h2>Preencher dados do Professor</h2>
+    <form id="professoresForm" onsubmit>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nomeProfessor" name="nome">
+
+      <label for="email">Email:</label>
+      <input type="email" id="emailProfessor" name="email">
+
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpfProfessor" name="cpf">
+
+      <label for="rg">RG:</label>
+      <input type="text" id="rgProfessor" name="rg">
+
+      <label for="titulacao">Titulação:</label>
+      <input type="text" id="titulacao" name="titulacao">
+
+      <label for="dataContratacao">Data de Contratação:</label>
+      <input type="date" id="dataContratacao" name="dataContratacao">
+
+      <button type="submit">Adicionar Professor</button>
+    </form>
+
+    
+  </div>
+
+
+  <div id="notas" class="tabcontent">
+    <h2>Preencher das avaliações</h2>
+    <form id="avaliacoesForm" onsubmit="(event)">
+
+      <label for="tipo">Tipo:</label>
+      <input type="text" id="tipo" name="tipo">
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data">
+
+      <label for="peso">Peso:</label>
+      <input type="number" id="peso" name="peso">
+
+      <label for="turmaDisciplinaId">Disciplina:</label>
+      <input type="number" id="turmaDisciplinaId" name="turmaDisciplinaId">
+      <button type="submit">Adicionar avaliação</button>
+
+    </form>
+
+    <form id="horarioForm" onsubmit="(event)">
+
+      <label for="turmaDisciplinaId">Disciplina referente a turma:</label>
+      <input type="number" id="turmaDisciplinaId" name="turmaDisciplinaId">
+
+      <label for="salaId">Sala:</label>
+      <input type="number" id="salaId" name="salaId">
+
+      <label for="diaSemana">Dia da Semana:</label>
+      <input type="text" id="diaSemana" name="diaSemana">
+
+      <label for="dataInicio">Data de Inicio:</label>
+      <input type="date" id="dataInicio" name="dataInicio">
+
+      <label for="horaInicio">Hora de Inicio:</label>
+      <input type="time" id="horaInicio" name="horaInicio">
+
+      <label for="dataFim">Data Final:</label>
+      <input type="date" id="dataFim" name="dataFim">
+
+      <label for="horaFim">Hora Final:</label>
+      <input type="time" id="horaFim" name="horaFim">
+      <button type="submit">Adicionar Horario</button>
+
+    </form>
+
+    <form id="disciplinasForm" onsubmit="(event)">
+      <label for="nome">Nome da Disciplina:</label>
+      <input type="text" id="nomeDisciplina" name="nome">
+
+      <label for="cargaHoraria">Carga Horária:</label>
+      <input type="number" id="cargaHoraria" name="cargaHoraria">
+
+      <label for="turmaDisciplinasId">Disciplina:</label>
+      <input type="text" id="turmaDisciplinasId" name="turmaDisciplinasId">
+      <button type="submit">Adicionar Disciplina</button>
+    </form>
+
+  </div>
+
+
+
+
+
+  <script src="Alunos.js"></script>
+  <script src="exibirAlunos.js"></script>
+  <script src="Professor.js"></script>
+
+
+
+</body>
+
+</html>
